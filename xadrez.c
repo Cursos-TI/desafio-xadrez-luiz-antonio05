@@ -34,43 +34,79 @@
 #include <stdio.h>
 
 int main() {
-  // simulação de movimento: Torre
-  // Movimento: 5 casas para a direita
-  // Estrutura: for
+    int opcao;
 
-  printf("Movimento da Torre: \n");
+    do {
+        // Exibição do menu
+        printf("\n=== Menu de Movimento de Peças de Xadrez ===\n");
+        printf("1 - Mover Torre (5 casas para a Direita)\n");
+        printf("2 - Mover Bispo (5 casas Cima Direita)\n");
+        printf("3 - Mover Rainha (8 casas para a Esquerda)\n");
+        printf("4 - Mover Cavalo (2 Baixo, 1 Esquerda)\n");
+        printf("0 - Sair\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
 
-  for(int i = 1; i <= 5; i++)
-  {
-    printf("Direita\n");
-  }
+        switch(opcao) {
 
-  // simulação de movimento: Bispo
-  // Movimento: 5 casas na diagonal cima-direita
-  // Estrutura: while
+            case 1:
+                // Movimento da Torre: For
+                printf("\nMovimento da Torre:\n");
+                for (int i = 1; i <= 5; i++) {
+                    printf("Direita\n");
+                }
+                break;
 
-  printf("\nMovimento do Bispo: \n");
+            case 2:
+                // Movimento do Bispo: While
+                printf("\nMovimento do Bispo:\n");
+                {
+                    int contBispo = 1;
+                    while (contBispo <= 5) {
+                        printf("Cima Direita\n");
+                        contBispo++;
+                    }
+                }
+                break;
 
-  int contBispo = 1;
-  while(contBispo <= 5)
-  {
-    printf("Cima-Direita\n");
-    contBispo++;
-  }
+            case 3:
+                // Movimento da Rainha: Do-While
+                printf("\nMovimento da Rainha:\n");
+                {
+                    int contRainha = 1;
+                    do {
+                        printf("Esquerda\n");
+                        contRainha++;
+                    } while (contRainha <= 8);
+                }
+                break;
 
-  // Simulação do movimento da RAINHA
-  // Movimento: 8 casas para a esquerda
-  // Estrutura usada: do-while
+            case 4:
+                // Movimento do Cavalo: For + While
+                printf("\nMovimento do Cavalo:\n");
+                {
+                    int movimentoCavalo = 1;
+                    for (int i = 0; i < movimentoCavalo; i++) {
+                        int passo = 0;
+                        while (passo < 2) {
+                            printf("Baixo\n");
+                            passo++;
+                        }
+                        printf("Esquerda\n");
+                    }
+                }
+                break;
 
-  printf("\nMovimento da Rainha: \n");
+            case 0:
+                printf("Encerrando o Programa...\n");
+                break;
 
-  int contRainha = 1;
+            default:
+                printf("Opção inválida.\n");
+                break;
+        }
 
-  do{
-    printf("Esquerda\n");
-    contRainha++;
-  } while(contRainha <= 8);
+    } while (opcao != 0);
 
-  return 0;
-
+    return 0;
 }
